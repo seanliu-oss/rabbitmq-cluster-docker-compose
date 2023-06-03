@@ -1,0 +1,32 @@
+services:
+  rabbitmq1:
+    build: rabbitmq/.
+    environment:
+      - RABBITMQ_CONFIG_FILE=/etc/rabbitmq/rabbitmq-cluster
+      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit log [{console,[{level,debug}]}] -setcookie cookie123
+      - RABBITMQ_NODENAME=rabbit@rabbitmq1
+    ports:
+      - "25001:5672"
+      - "35001:15672"
+
+
+  rabbitmq2:
+    build: rabbitmq/.
+    environment:
+      - RABBITMQ_CONFIG_FILE=/etc/rabbitmq/rabbitmq-cluster
+      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit log [{console,[{level,debug}]}] -setcookie cookie123
+      - RABBITMQ_NODENAME=rabbit@rabbitmq2
+    ports:
+      - "25002:5672"
+      - "35002:15672"
+
+
+  rabbitmq3:
+    build: rabbitmq/.
+    environment:
+      - RABBITMQ_CONFIG_FILE=/etc/rabbitmq/rabbitmq-cluster
+      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit log [{console,[{level,debug}]}] -setcookie cookie123
+      - RABBITMQ_NODENAME=rabbit@rabbitmq3
+    ports:
+      - "25003:5672"
+      - "35003:15672"
